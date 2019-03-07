@@ -49,6 +49,24 @@ app.get("/table", function (req, res) {
     res.sendFile(path.join(__dirname, "table.html"));
 });
 
+app.get("/api/reservations", function(req, res) {
+    return res.json(reservations);
+  });
+
+  app.post("/api/reservations", function(req, res) {
+    // req.body hosts is equal to the JSON post sent from the user
+    // This works because of our body parsing middleware
+    var newReservation = req.body;
+  
+    newReservation.routeName = newReservation.name.replace(/\s+/g, "").toLowerCase();
+  
+    console.log(newReservation);
+  
+    reservations.push(newReservation);
+  
+    res.json(newReservation);
+  });
+
 
 app.listen(PORT, function() {
     console.log(`App listening on Port ${PORT}`)
