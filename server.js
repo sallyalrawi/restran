@@ -15,24 +15,23 @@ app.use(express.json());
 var reservations = [
     {
       id: "table1",
-      
       name: "Yoda",
       eMail: "JediMaster@theforceiswithyou.com",
-      Phone: 214-434-5379,
+      Phone: "214-434-5379"
       
     },
     {
         id: "table2",
         name: "Adrian",
         eMail: "TheAdrian@thisismyemail.com ",
-        Phone: 867-5309,
+        Phone: "867-5309"
         
       },
       {
         id: "table3",
         name: "Sally",
         eMail: "Sally@theforceiswithyou.com",
-        Phone: 214-434-8546,
+        Phone: "214-434-8546"
         
       },
   ];
