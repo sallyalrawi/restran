@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>view</title>
+  <!-- Latest compiled and minified CSS & JS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Hot Restaurant Express</h1>
+      <h3>Current Reservations and waiting list </h3>
+      <hr>
+      <a href="/view.html"><button class="btn btn-danger btn-lg"><span class="fa fa-plus"></span>Make Reservation</button></a>
+    </div>
+    <div class="row">
+
+      <div class="col-12">
+
+        <div class="card mb-4">
+          <div class="card-header">
+            <h3><strong>Current Reservations</strong></h3>
+          </div>
+          <div class="card-body">
+            <input type="text" id="character-search" class="form-control">
+            <br>
+           
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3><strong>Waiting List</strong></h3>
+            <div class="card-body">
+                <input type="text" id="character-search" class="form-control">
+                <br>
+               
+              </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    $(".btn btn-danger btn-lg").on("click", function() {
+      var makereservation = $(".btn btn-danger btn-lg").val().trim();
+
+      // Using a RegEx Pattern to remove spaces from searchedCharacter
+      // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
+      makereservation = makereservation.replace(/\s+/g, "").toLowerCase();
+
+      $.get("/api/reservations/" + makereservation, function(data) {
+        console.log(data);
+        if (data) {
+          $("#stats").show();
+          $("#name").text(data.name);
+          $("#Phone").text(data.phone);
+          $("#Email").text(data.email);
+          $("#Id").text(data.id);
+        }
+        else {
+          $("#name").text("you are on the waiting list");
+          $("#stats").hide();
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
