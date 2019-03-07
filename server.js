@@ -12,3 +12,16 @@ var PORT = process.env.PORT || 3005;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+
+//Basic routes
+app.get("/", function (req, res) {
+    res.sendFile(path.join(__dirname, "home.html"));
+});
+
+app.get("/make", function (req, res) {
+    res.sendFile(path.join(__dirname, "make.html"));
+});
+
+app.get("/view", function (req, res) {
+    res.sendFile(path.join(__dirname, "view.html"));
+});
