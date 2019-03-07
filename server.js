@@ -11,9 +11,9 @@ var PORT = process.env.PORT || 3005;
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-// Star Wars Characters (DATA)
+// Create a few array variables that will hold the dataWith data (DATA)
 // =============================================================
-var characters = [
+var reservations = [
     {
       id: "table1",
       name: "Yoda",
